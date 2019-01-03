@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="demo.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <h2>Welcome To Sort Data By Name</h2>
+    <div class="input-group" style="padding-bottom: 10px">
+        <span class="input-group-addon">SEARCH</span>
+        <input type="text" id="search" onkeyup="search_value()" class="form-control" placeholder="Search" style="width: 50% ">
+        <button type="button" class="btn btn-success"  onclick="descendingBySal()">Descending</button>
+        <button type="button" class="btn btn-success"  onclick="ascendingBysal()">Ascending</button>
+    </div>
+    <div class="table-responsive">
+        <table border="3" id="data" style="width:100%" ></table>
+    </div>
+</div>
+<script>
+  var objKeys = ["id","employee_name","employee_salary","employee_age"]
+  var table = document.getElementById("data") ;
+  document.getElementById("data").innerHTML = table ;
+  var displayData = dataOne;
+  table = "<tr><th>ID</th><th>Name</th><th>Salary</th><th>age</th></tr>";
+
+  function printData(displayData) {
+    table = "<tr><th>ID</th><th>Name</th><th>Salary</th><th>age</th></tr>";
+    displayData.map(function (value) {
+      table += "<tr><td>"+value.id+"</td><td>"+value.employee_name+"</td><td>"+ value.employee_salary+"</td><td>"+value.employee_age+"</td></tr>"
+    });
+    document.getElementById("data").innerHTML = table ;
+  }
+
+  function descendingBySal () {
+    table = "";
+    table = "<tr><td>ID</td><td>Name</td><td>Salary</td><td>age</td></tr>";
+    displayData.sort(function(a, b) {
+      return b.employee_name - a.employee_name;
+    });
+    printData(displayData);
+  }
+
+  function ascendingBysal () {
+    table = "";
+    table = "<tr><td>ID</td><td>Name</td><td>Salary</td><td>age</td></tr>";
+    displayData.sort(function(a, b) {
+      return a.employee_name - b.employee_name;
+    });
+    printData(displayData);
+  }
+
+  function search_value() {
+    table = "<tr><th>ID</th><th>Name</th><th>Salary</th><th>age</th></tr>";
+    var on =0;
+    var searchData = displayData.filter(function (values)  {
+      var input = document.getElementById("search").value.toLowerCase();
+      for (var i in objKeys) {
+        if(values[objKeys[i]].includes(input)){
+          on++;
+          return values
+        }
+      }
+    })
+    if ( on == 0 ) {
+      alert("No Data Found :(")
+    }
+    printData(searchData);
+  }
+
+  printData(displayData);
+</script>
+</body>
+</html>

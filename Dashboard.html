@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="demo.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <h2>Render Data</h2>
+    <div class="table-responsive">
+<table border="3" id="data" ></table>
+    </div>
+</div>
+<script>
+    var table = document.getElementById("data") ;
+    document.getElementById("data").innerHTML = table ;
+    /*
+    * {
+    "id": "296",
+    "employee_name": "suresh ",
+    "employee_salary": "5",
+    "employee_age": "31",
+    "profile_image": ""
+  },
+    * */
+  var displayData = dataOne;
+    table = "<tr><th>ID</th><th>Name</th><th>Salary</th><th>age</th></tr>";
+  //table = "<tr><th>"+Name+"</th></tr>";
+    function printData(displayData) {
+      displayData.map(function (value) {
+        table += "<tr><td>"+value.id+"</td><td>"+value.employee_name+"</td><td>"+ value.employee_salary+"</td><td>"+value.employee_age+"</td></tr>"
+      });
+      document.getElementById("data").innerHTML = table ;
+
+    }
+    printData(displayData);
+</script>
+</body>
+</html>

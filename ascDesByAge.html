@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="demo.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <h2>Welcome To Sort Data By Age</h2>
+    <button type="button" class="btn btn-success"   onclick="dothis(this)" id="DscId ">Descending ID</button>
+    <button type="button" class="btn btn-success"   onclick="dothis(this)" id="AscId">Ascending ID</button>
+    <button type="button" class="btn btn-success"  onclick="dothis(this)" id="DscSal">Descending Salary</button>
+    <button type="button" class="btn btn-success"  onclick="dothis(this)" id="AscSal">Ascending Salary</button>
+    <button type="button" class="btn btn-success"  onclick="dothis(this)" id="DscAge">Descending Age</button>
+    <button type="button" class="btn btn-success"  onclick="dothis(this)" id="AscAge">Ascending Age</button>
+    <div class="table-responsive">
+        <table border="3" id="data" style="width:100%" ></table>
+    </div>
+</div>
+<script>
+  var table = document.getElementById("data") ;
+  document.getElementById("data").innerHTML = table ;
+  var displayData = dataOne;
+  table = "<tr><th>ID</th><th>Name</th><th>Salary</th><th>age</th></tr>";
+
+  function printData(displayData) {
+    displayData.map(function (value) {
+      table += "<tr><td>"+value.id+"</td><td>"+value.employee_name+"</td><td>"+ value.employee_salary+"</td><td>"+value.employee_age+"</td></tr>"
+    });
+    document.getElementById("data").innerHTML = table ;
+  }
+
+  // function descendingByAge () {
+  //   table = "";
+  //   table = "<tr><td>ID</td><td>Name</td><td>Salary</td><td>age</td></tr>";
+  //   displayData.sort(function(a, b) {
+  //     return b.employee_salary - a.employee_salary;
+  //   });
+  //   printData(displayData);
+  // }
+  //
+  // function ascendingByAge () {
+  //   table = "";
+  //   table = "<tr><td>ID</td><td>Name</td><td>Salary</td><td>age</td></tr>";
+  //   displayData.sort(function(a, b) {
+  //     return a.employee_age - b.employee_age;
+  //   });
+  //   printData(displayData);
+  // }
+
+  function dothis(source) {
+    console.log("========",source.id)
+    document.getElementById('DscId').onclick = function() {
+      table = "";
+      table = "<tr><td>ID</td><td>Name</td><td>Salary</td><td>age</td></tr>";
+      displayData.sort(function(a, b) {
+        return b.id - a.id;
+      });
+      printData(displayData);
+    }
+    document.getElementById('AscId').onclick = function() {
+      table = "";
+      table = "<tr><td>ID</td><td>Name</td><td>Salary</td><td>age</td></tr>";
+      displayData.sort(function(a, b) {
+        return a.id - b.id;
+      });
+      printData(displayData);
+    }
+    document.getElementById('AscAge').onclick = function() {
+      table = "";
+      table = "<tr><td>ID</td><td>Name</td><td>Salary</td><td>age</td></tr>";
+      displayData.sort(function(a, b) {
+        return a.employee_age - b.employee_age;
+      });
+      printData(displayData);
+    }
+    document.getElementById('DscAge').onclick = function() {
+      table = "";
+      table = "<tr><td>ID</td><td>Name</td><td>Salary</td><td>age</td></tr>";
+      displayData.sort(function(a, b) {
+        return b.employee_salary - a.employee_salary;
+      });
+      printData(displayData);
+    }
+    document.getElementById('DscSal').onclick = function() {
+      table = "";
+      table = "<tr><td>ID</td><td>Name</td><td>Salary</td><td>age</td></tr>";
+      displayData.sort(function(a, b) {
+        return b.employee_salary - a.employee_salary;
+      });
+      printData(displayData);
+    }
+    document.getElementById('AscSal').onclick = function() {
+      table = "";
+      table = "<tr><td>ID</td><td>Name</td><td>Salary</td><td>age</td></tr>";
+      displayData.sort(function(a, b) {
+        return a.employee_salary - b.employee_salary;
+      });
+      printData(displayData);
+    }
+
+  }
+
+  printData(displayData);
+  dothis();
+</script>
+</body>
+</html>
